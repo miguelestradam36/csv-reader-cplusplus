@@ -57,11 +57,17 @@ int main()
             items++;
         }
     }
+    // Create an output filestream object
+    std::ofstream myFile("Locations.csv");
     // Print the data stored in the 2D array
     for (int g = 0; g < items; g++)
     {
+        myFile << states_usa[g] << "\n";
         cout << "Locations: " << states_usa[g] << endl;
     }
+    cout << "Loaded results into CSV file (You can find it in the same repository as your code)" << endl;
+    // Close the file
+    myFile.close();
     cout << "Results on the search of only 100 rows, you can change that value in the constant variable at the beginning of this code." << endl;
 
     return 0;
