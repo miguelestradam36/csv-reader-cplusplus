@@ -6,9 +6,9 @@
 using namespace std;
 
 // Maximum number of rows for the 2D array
-const int MAX_ROWS = 100;
+const int MAX_ROWS = 400;
 // Maximum number of columns for the 2D array
-const int MAX_COLS = 100;
+const int MAX_COLS = 40;
 
 int main()
 {   
@@ -43,6 +43,7 @@ int main()
     //QUICK ANALYSIS: Have a list of all the states in the CSV
     string states_usa[MAX_ROWS];
     int items = 0;
+    int counter = 0;
 
     for (int f = 1; f < row; f++)
     {
@@ -50,6 +51,7 @@ int main()
         for (int k = 0; k <= items; k++) {
             if (states_usa[k] == data[f][0]) {
                 on_list = 1;
+                counter++;
             }
         }
         if (on_list == 0) {
@@ -57,18 +59,18 @@ int main()
             items++;
         }
     }
+    cout << counter << " locations repeated in the csv file.. (" << MAX_ROWS << " rows as input)" << endl;
     // Create an output filestream object
     std::ofstream myFile("Locations.csv");
     // Print the data stored in the 2D array
     for (int g = 0; g < items; g++)
     {
         myFile << states_usa[g] << "\n";
-        cout << "Locations: " << states_usa[g] << endl;
     }
     cout << "Loaded results into CSV file (You can find it in the same repository as your code)" << endl;
     // Close the file
     myFile.close();
-    cout << "Results on the search of only 100 rows, you can change that value in the constant variable at the beginning of this code." << endl;
+    cout << "Results on the search of only " << MAX_ROWS <<" rows, you can change that value in the constant variable at the beginning of this code." << endl;
 
     return 0;
 }
